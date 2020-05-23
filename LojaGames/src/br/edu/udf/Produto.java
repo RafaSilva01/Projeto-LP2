@@ -4,25 +4,29 @@ public class Produto {
 	private String nome;
 	private String codigo;
 	private double desconto;	
-	private int quantidade;
+	private int quantidadeDisponivel;
 	private double precoOriginal;
 	private double precoFinal;
 	
-	public void adicionarProduto(int quantidadeParaAdicionar) {
-		this.quantidade += quantidadeParaAdicionar;
+	public boolean aumentarQuantidade(int quantidadeParaAdicionar) {
+		this.quantidadeDisponivel += quantidadeParaAdicionar;
+		System.out.println("Quantidade adicionada com sucesso!");
+		return true;
 	}
 	
-	public void removerProduto(int quantidadeParaRemover) {
-		if (quantidadeParaRemover > this.quantidade) {
-			// lancar uma Exception seria uma boa ideia
+	public boolean diminuirQuantidade(int quantidadeParaDiminuir) {
+		if (quantidadeParaDiminuir > this.quantidadeDisponivel) {
 			System.out.println("Quantidade não pode ser removida");
+			return false;
 		} else {
-			this.quantidade -= quantidadeParaRemover;
+			this.quantidadeDisponivel -= quantidadeParaDiminuir;
+			System.out.println("Quantidade removida com sucesso!");
+			return true;
 		}
 	}
 	
-	public int getQuantidade() {
-		return quantidade;
+	public int getQuantidadeDisponivel() {
+		return quantidadeDisponivel;
 	}
 	
 	public String getNome() {

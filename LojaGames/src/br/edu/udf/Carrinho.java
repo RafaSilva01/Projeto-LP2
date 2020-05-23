@@ -6,25 +6,37 @@ public class Carrinho {
 
 	private ArrayList<Produto> produtos;
 
-	public void adicionarProduto(int codigoProduto) {
+	public boolean adicionarProduto(String codigoProduto) {
+		boolean retorno = false;
 		Produto produto = DBLoja.buscaProdutoPorCodigo(codigoProduto);
 		this.produtos.add(produto);
+		if (this.produtos.contains(produto)) {
+			System.out.println("Produto adicionado com sucesso!");
+			retorno = true;
+		}
+		return retorno;
 	}
 
-	public void removerProduto(int codigoProduto) {
+	public boolean removerProduto(String codigoProduto) {
+		boolean retorno = false;
+
 		Produto produto = DBLoja.buscaProdutoPorCodigo(codigoProduto);
 		if (this.produtos.contains(produto)) {
 			produtos.remove(produto);
-
+			System.out.println("Produto removido com sucesso!");
+			retorno = true;
 		}
+		return retorno;
 	}
 
 	public int quantidadeItens() {
 		return this.produtos.size();
-	};
-	
+	}
+
+	@Override
 	public String toString() {
-		// TODO implementar
-		return "";
+		return "Carrinho{" +
+				"produtos=" + produtos +
+				'}';
 	}
 }

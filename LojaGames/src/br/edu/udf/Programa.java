@@ -1,7 +1,5 @@
+package br.edu.udf;
 import java.util.Scanner;
-
-import br.edu.udf.Carrinho;
-import br.edu.udf.Produto;
 
 public class Programa {
    public static void main(String[] args) {
