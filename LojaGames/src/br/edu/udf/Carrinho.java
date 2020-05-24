@@ -5,10 +5,11 @@ import java.util.ArrayList;
 public class Carrinho {
 
 	private ArrayList<Produto> produtos;
+	private DBLoja banco;
 
 	public boolean adicionarProduto(String codigoProduto) {
 		boolean retorno = false;
-		Produto produto = DBLoja.buscaProdutoPorCodigo(codigoProduto);
+		Produto produto = banco.buscaProdutoPorCodigo(codigoProduto);
 		this.produtos.add(produto);
 		if (this.produtos.contains(produto)) {
 			System.out.println("Produto adicionado com sucesso!");
@@ -20,7 +21,7 @@ public class Carrinho {
 	public boolean removerProduto(String codigoProduto) {
 		boolean retorno = false;
 
-		Produto produto = DBLoja.buscaProdutoPorCodigo(codigoProduto);
+		Produto produto = banco.buscaProdutoPorCodigo(codigoProduto);
 		if (this.produtos.contains(produto)) {
 			produtos.remove(produto);
 			System.out.println("Produto removido com sucesso!");
