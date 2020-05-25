@@ -32,5 +32,8 @@ public class Programa {
         System.out.println("============================");
         banco.listaProdutos();
 
+        banco.excluirProduto("123");
+        banco.listaProdutos();
+
     }
 }

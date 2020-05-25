@@ -16,6 +16,7 @@ public class DBLoja {
                 return produto;
             }
         }
+        System.out.println("Produto inexistente.");
         return null;
     }
 
@@ -77,5 +78,19 @@ public class DBLoja {
         }
 
         return retorno;
+    }
+
+    public boolean excluirProduto(String codigoProduto) {
+        boolean retorno = false;
+        Produto produtoParaExcluir = buscaProdutoPorCodigo(codigoProduto);
+        if (produtoParaExcluir != null) {
+            if (produtos.remove(produtoParaExcluir)) {
+                retorno = true;
+            }
+        } else {
+            System.out.println("Nao foi possivel excluir o produto.");
+        }
+        return retorno;
+
     }
 }
