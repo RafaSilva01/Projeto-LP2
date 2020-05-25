@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Carrinho {
 
 	private ArrayList<Produto> produtos;
-	private DBLoja banco;
+	private DBProdutos banco;
 
 	public boolean adicionarProduto(String codigoProduto) {
 		boolean retorno = false;
