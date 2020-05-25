@@ -6,9 +6,23 @@ import java.util.ArrayList;
 public class DBLoja {
     private static final ArrayList<Produto> produtos = new ArrayList<>();
 
+    public static ArrayList<Produto> getProdutos() {
+        return produtos;
+    }
+
     public Produto buscaProdutoPorCodigo(String codigoProduto) {
-        // TODO implementar corretamente
-        return new Produto();
+        for (Produto produto : produtos) {
+            if (produto.getCodigo() == codigoProduto) {
+                return produto;
+            }
+        }
+        return null;
+    }
+
+    public void listaProdutos() {
+        for (Produto produto : produtos) {
+            System.out.println(produto.toString());
+        }
     }
 
     private boolean salvarProduto(Produto produtoRecebido) {
@@ -18,20 +32,13 @@ public class DBLoja {
         for (Produto produto : produtos) {
             if (produto.getCodigo() == produtoRecebido.getCodigo()) {
                 codigoExistente = true;
-            } else {
                 System.out.println("O codigo do produto precisa ser unico.");
-
             }
         }
 
         if (codigoExistente == false) {
             if (produtos.add(produtoRecebido)) {
                 retorno = true;
-                for (Produto produto : produtos) {
-                    System.out.println("produto >>> " + produto.toString()
-                    );
-                }
-
             }
         }
 
@@ -48,7 +55,7 @@ public class DBLoja {
         if (produto.getNome() != null || produto.getNome() != "") {
             isNomeValid = true;
         } else {
-            System.out.println("O nome do produto esta invalidado.");
+            System.out.println("O nome do produto esta invalido.");
         }
 
         if (produto.getPrecoOriginal() != null || produto.getPrecoOriginal() != 0.0) {
@@ -60,7 +67,7 @@ public class DBLoja {
         if (produto.getCodigo() != null || produto.getCodigo() != "") {
             isNomeValid = true;
         } else {
-            System.out.println("O codigo do produto esta invalidado.");
+            System.out.println("O codigo do produto esta invalido.");
         }
 
         if (isNomeValid && isPrecoOriginalValid && isCodigoValid) {

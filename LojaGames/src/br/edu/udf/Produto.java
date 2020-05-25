@@ -1,7 +1,7 @@
 package br.edu.udf;
 
 public class Produto {
-    private static String codigo;
+    private String codigo;
     private String nome;
     private double desconto;
     private int quantidadeDisponivel;
@@ -12,9 +12,15 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(String nome, String codigo, double desconto, int quantidadeDisponivel, double precoOriginal, double precoFinal) {
+    public Produto(String codigo, String nome, Double precoOriginal) {
+        this.codigo = codigo;
         this.nome = nome;
-        Produto.codigo = codigo;
+        this.precoOriginal = precoOriginal;
+    }
+
+    public Produto(String codigo, String nome, double desconto, int quantidadeDisponivel, double precoOriginal, double precoFinal) {
+        this.nome = nome;
+        this.codigo = codigo;
         this.desconto = desconto;
         this.quantidadeDisponivel = quantidadeDisponivel;
         this.precoOriginal = precoOriginal;
@@ -55,7 +61,7 @@ public class Produto {
     }
 
     public void setCodigo(String codigo) {
-        Produto.codigo = codigo;
+        this.codigo = codigo;
     }
 
     public double getDesconto() {
@@ -91,8 +97,9 @@ public class Produto {
     public String toString() {
         return "Produto { " +
                 "Nome: '" + nome + '\'' +
-                ", Desconto: R$ " + desconto +
+                ", Codigo: " + codigo +
                 ", Quantidade Disponivel: " + quantidadeDisponivel +
+                ", Desconto: R$ " + desconto +
                 ", Preco Original: R$ " + precoOriginal +
                 ", Preco Final: R$ " + this.getPrecoFinal() +
                 " }";
