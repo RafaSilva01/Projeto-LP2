@@ -9,7 +9,7 @@ public class Cliente {
 	private String cpf;
 	private String usuario;
 	private String senha;
-	private String endereço;
+	private String endereco;
 	private String email;
 	private ArrayList<ComprasRealizadas> comprasRealizadas;
 	private FormasPagamento formaPagamento;
@@ -18,12 +18,12 @@ public class Cliente {
 		// Construtor vazio para a criação de Clientes sem a necessidade de passar os parametros
 	}
 
-	public Cliente(String nome, String cpf, String usuario, String senha, String endereço, String email) {
+	public Cliente(String nome, String cpf, String usuario, String senha, String endereco, String email) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.usuario = usuario;
 		this.senha = senha;
-		this.endereço = endereço;
+		this.endereco = endereco;
 		this.email = email;
 	}
 
@@ -67,12 +67,12 @@ public class Cliente {
 		this.senha = senha;
 	}
 
-	public String getEndereço() {
-		return endereço;
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setEndereço(String endereço) {
-		this.endereço = endereço;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	public String getEmail() {
@@ -98,7 +98,18 @@ public class Cliente {
 	public void setFormaPagamento(FormasPagamento formaPagamento) {
 		this.formaPagamento = formaPagamento;
 	}
-	
-	
+
+	public boolean validaCPF(String cpf) {
+		boolean isCPFValid = true;
+		if (CPF.equals("00000000000") || CPF.equals("11111111111") ||
+				CPF.equals("22222222222") || CPF.equals("33333333333") ||
+				CPF.equals("44444444444") || CPF.equals("55555555555") ||
+				CPF.equals("66666666666") || CPF.equals("77777777777") ||
+				CPF.equals("88888888888") || CPF.equals("99999999999") ||
+				(CPF.length() != 11)) {
+			isCPFValid = false;
+		}
+		return isCPFValid;
+	}
 	
 }
