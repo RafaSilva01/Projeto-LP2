@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class DBProdutos {
     private static final ArrayList<Produto> produtos = new ArrayList<>();
+    private final Uteis uteis = new Uteis();
 
     public static ArrayList<Produto> getProdutos() {
         return produtos;
@@ -25,36 +26,6 @@ public class DBProdutos {
         }
     }
 
-    private boolean salvarProduto(Produto produtoRecebido) {
-        boolean retorno = false;
-        boolean codigoExistente = false;
-
-        for (Produto produto : produtos) {
-            if (produto.getCodigo() == produtoRecebido.getCodigo()) {
-                codigoExistente = true;
-                System.out.println("O codigo do produto precisa ser unico.");
-            }
-        }
-
-        if (codigoExistente == false) {
-            if (produtos.add(produtoRecebido)) {
-                retorno = true;
-            }
-        }
-
-        return retorno;
-    }
-
-    private boolean isNomeValid(String nome) {
-        boolean isNomeValid = false;
-        if (nome != null && nome != "") {
-            isNomeValid = true;
-        } else {
-            System.out.println("O nome do produto esta invalido.");
-        }
-        return isNomeValid;
-    }
-
     private boolean isPrecoOriginalValid(Double precoOriginal) {
         boolean isPrecoOriginalValid = false;
         if (precoOriginal != null && precoOriginal != 0.0) {
@@ -65,29 +36,40 @@ public class DBProdutos {
         return true;
     }
 
-    private boolean isCodigoValid(String codigo) {
+    private boolean isCodigoValid(String codigoRecebido) {
         boolean isCodigoValid = false;
-        if (codigo != null && codigo != "") {
+        boolean isCodigoUnico = true;
+
+        if (codigoRecebido != null && codigoRecebido != "") {
             isCodigoValid = true;
         } else {
             System.out.println("O codigo do produto esta invalido.");
         }
-        return isCodigoValid;
+
+        for (Produto produto : produtos) {
+            if (produto.getCodigo() == codigoRecebido) {
+                isCodigoUnico = false;
+                System.out.println("O codigo do produto precisa ser unico.");
+            }
+        }
+
+        return isCodigoValid && isCodigoUnico;
     }
 
-    public boolean cadastrarProduto(Produto produto) {
+    public boolean cadastrarProduto(Produto produtoRecebido) {
         boolean retorno = false;
-        boolean isPrecoOriginalValid = true;
+        boolean isPrecoOriginalValid = false;
         boolean isNomeValid = false;
         boolean isCodigoValid = false;
 
-        isNomeValid = isNomeValid(produto.getNome());
-        isPrecoOriginalValid = isPrecoOriginalValid(produto.getPrecoOriginal());
-        isCodigoValid = isCodigoValid(produto.getCodigo());
+        isNomeValid = uteis.isNomeValid(produtoRecebido.getNome());
+        isPrecoOriginalValid = isPrecoOriginalValid(produtoRecebido.getPrecoOriginal());
+        isCodigoValid = isCodigoValid(produtoRecebido.getCodigo());
 
         if (isNomeValid && isPrecoOriginalValid && isCodigoValid) {
-            if (this.salvarProduto(produto)) {
+            if (produtos.add(produtoRecebido)) {
                 retorno = true;
+                System.out.println("Produto cadastrado com sucesso!");
             }
         }
 
@@ -114,7 +96,7 @@ public class DBProdutos {
         boolean isNomeValid = false;
         boolean isCodigoValid = false;
 
-        isNomeValid = isNomeValid(produtoRecebido.getNome());
+        isNomeValid = uteis.isNomeValid(produtoRecebido.getNome());
         isPrecoOriginalValid = isPrecoOriginalValid(produtoRecebido.getPrecoOriginal());
         isCodigoValid = isCodigoValid(produtoRecebido.getCodigo());
 
@@ -123,7 +105,7 @@ public class DBProdutos {
                 if (produto.getCodigo() == produtoRecebido.getCodigo()) {
                     retorno = true;
                 }
-            }
+            }//
         }
 
         if (retorno == true) {

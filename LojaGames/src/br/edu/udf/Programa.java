@@ -1,13 +1,12 @@
 package br.edu.udf;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Programa {
     public static void main(String[] args) {
         DBProdutos dbProdutos = new DBProdutos();
         Cliente cliente = new Cliente();
-        Scanner input = new Scanner(System.in);
-        /* 
+
         Produto produto = new Produto();
         produto.setNome("GTA 5");
         produto.setCodigo("123");
@@ -18,8 +17,8 @@ public class Programa {
         dbProdutos.cadastrarProduto(produto);
         dbProdutos.cadastrarProduto(produto2);
 
-        Produto retorno = dbProdutos.buscaProdutoPorCodigo("12345");
-        System.out.println("retorno >>>> " + retorno);
+//        Produto retorno = dbProdutos.buscaProdutoPorCodigo("12345");
+//        System.out.println("retorno >>>> " + retorno);
 
         System.out.println("============================");
         System.out.println("========Listagem 01=========");
@@ -33,35 +32,11 @@ public class Programa {
         System.out.println("========Listagem 02=========");
         System.out.println("============================");
         dbProdutos.listaProdutos();
-        dbProdutos.editarProduto(new Produto("123", "GTA 5 - PS4", 99.99));
-        dbProdutos.excluirProduto("123");
-        dbProdutos.listaProdutos();*/
-        
-        System.out.print("Informe o nome: ");
-    	cliente.setNome(input.nextLine());
-   
-    	System.out.print("Informe o CPF: ");
-    	cliente.setCpf(input.nextLine());
-    	
-    	System.out.print("Informe nome de usuário: ");
-    	cliente.setUsuario(input.nextLine());
-    	
-    	System.out.print("Informe a senha seu corno: ");
-    	cliente.setSenha(input.nextLine());
-    	
-    	System.out.print("Informe o endereço: ");
-    	cliente.setEndereço(input.nextLine());
-    	
-    	System.out.print("Informe o e-mail: ");
-    	cliente.setEmail(input.nextLine());
-    
-    	System.out.println(cliente.getNome());
-    	System.out.println(cliente.getCpf());
-    	System.out.println(cliente.getUsuario());
-    	System.out.println(cliente.getSenha());
-    	System.out.println(cliente.getEndereço());
-    	System.out.println(cliente.getEmail());
-        
+
+//        dbProdutos.editarProduto(new Produto("123", "GTA 5 - PS4", 99.99));
+//        dbProdutos.excluirProduto("123");
+//        dbProdutos.listaProdutos();
+
 
     }
 }
