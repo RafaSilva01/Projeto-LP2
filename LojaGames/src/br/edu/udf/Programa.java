@@ -1,5 +1,5 @@
 package br.edu.udf;
-
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Programa {
@@ -7,6 +7,8 @@ public class Programa {
         DBProdutos dbProdutos = new DBProdutos();
         Cliente cliente = new Cliente();
         Scanner input = new Scanner(System.in);
+        ArrayList <Produto> produtos = new ArrayList();
+
         /* 
         Produto produto = new Produto();
         produto.setNome("GTA 5");
@@ -37,6 +39,8 @@ public class Programa {
         dbProdutos.excluirProduto("123");
         dbProdutos.listaProdutos();*/
         
+        
+        
         System.out.print("Informe o nome: ");
     	cliente.setNome(input.nextLine());
    
@@ -46,11 +50,11 @@ public class Programa {
     	System.out.print("Informe nome de usuário: ");
     	cliente.setUsuario(input.nextLine());
     	
-    	System.out.print("Informe a senha seu corno: ");
+    	System.out.print("Informe a senha: ");
     	cliente.setSenha(input.nextLine());
     	
     	System.out.print("Informe o endereço: ");
-    	cliente.setEndereço(input.nextLine());
+    	cliente.setEndereco(input.nextLine());
     	
     	System.out.print("Informe o e-mail: ");
     	cliente.setEmail(input.nextLine());
@@ -59,8 +63,9 @@ public class Programa {
     	System.out.println(cliente.getCpf());
     	System.out.println(cliente.getUsuario());
     	System.out.println(cliente.getSenha());
-    	System.out.println(cliente.getEndereço());
+    	System.out.println(cliente.getEndereco());
     	System.out.println(cliente.getEmail());
+
         
 
     }

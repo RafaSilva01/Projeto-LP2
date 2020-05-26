@@ -9,21 +9,22 @@ public class Cliente {
 	private String cpf;
 	private String usuario;
 	private String senha;
-	private String endereço;
+	private String endereco;
 	private String email;
 	private ArrayList<ComprasRealizadas> comprasRealizadas;
+
 	private FormasPagamento formaPagamento;
 	
 	public Cliente() {
 		// Construtor vazio para a criação de Clientes sem a necessidade de passar os parametros
 	}
 
-	public Cliente(String nome, String cpf, String usuario, String senha, String endereço, String email) {
+	public Cliente(String nome, String cpf, String usuario, String senha, String endereco, String email) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.usuario = usuario;
 		this.senha = senha;
-		this.endereço = endereço;
+		this.endereco = endereco;
 		this.email = email;
 	}
 
@@ -67,12 +68,12 @@ public class Cliente {
 		this.senha = senha;
 	}
 
-	public String getEndereço() {
-		return endereço;
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setEndereço(String endereço) {
-		this.endereço = endereço;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	public String getEmail() {
@@ -98,6 +99,8 @@ public class Cliente {
 	public void setFormaPagamento(FormasPagamento formaPagamento) {
 		this.formaPagamento = formaPagamento;
 	}
+	
+	
 	
 	
 	
