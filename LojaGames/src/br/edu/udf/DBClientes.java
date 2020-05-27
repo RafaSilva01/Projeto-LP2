@@ -42,10 +42,8 @@ public class DBClientes {
         Cliente clienteParaExcluir = buscaClientePorCPF(CPF);
         if (clienteParaExcluir != null) {
             if (clientes.remove(clienteParaExcluir)) {
-                System.out.printf("Produto codigo ("+CPF+") excluido.");
-
                 retorno = true;
-                System.out.println("Cliente excluido com sucesso");
+                System.out.println("Cliente com CPF:"+CPF+" excluido com sucesso");
             }
         } else {
             System.out.println("Nao foi possivel excluir o cliente.");

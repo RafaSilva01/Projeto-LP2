@@ -10,7 +10,10 @@ public class TestaCliente {
         Cliente cliente2 = new Cliente("Thurion", "82520465213", "Avenida Vailá", "T.gusthus@gmail.com", 10.00);
 
         //Cadastra Cliente
+        //Cadastra produto Produto
         dbClientes.cadastrarCliente(cliente);
+        dbClientes.cadastrarCliente(cliente1);
+        dbClientes.cadastrarCliente(cliente2);
         dbClientes.listaClientes();
 
         //Editar Cliente
