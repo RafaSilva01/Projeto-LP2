@@ -6,6 +6,7 @@ public class Carrinho {
 
 	private ArrayList<Produto> produtos;
 	private DBProdutos banco;
+	private String CPFCliente;
 
 	public boolean adicionarProduto(String codigoProduto) {
 		boolean retorno = false;
@@ -34,10 +35,19 @@ public class Carrinho {
 		return this.produtos.size();
 	}
 
+
+
+
 	@Override
 	public String toString() {
 		return "Carrinho{" +
 				"produtos=" + produtos +
 				'}';
 	}
+
+
+
+
+
+
 }

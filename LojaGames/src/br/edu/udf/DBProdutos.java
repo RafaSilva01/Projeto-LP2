@@ -1,5 +1,4 @@
 package br.edu.udf;
-
 import java.util.ArrayList;
 
 public class DBProdutos {
@@ -105,7 +104,7 @@ public class DBProdutos {
                 if (produto.getCodigo() == produtoRecebido.getCodigo()) {
                     retorno = true;
                 }
-            }//
+            }
         }
 
         if (retorno == true) {

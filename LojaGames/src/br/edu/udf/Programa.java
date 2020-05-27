@@ -5,9 +5,11 @@ import java.util.ArrayList;
 public class Programa {
     public static void main(String[] args) {
         DBProdutos dbProdutos = new DBProdutos();
-        Cliente cliente = new Cliente();
+        BDClientes bdClientes = new BDClientes();
 
         Produto produto = new Produto();
+        Cliente cliente = new Cliente();
+
         produto.setNome("GTA 5");
         produto.setCodigo("123");
         produto.setPrecoOriginal(119.89);
@@ -33,10 +35,17 @@ public class Programa {
         System.out.println("============================");
         dbProdutos.listaProdutos();
 
-//        dbProdutos.editarProduto(new Produto("123", "GTA 5 - PS4", 99.99));
-//        dbProdutos.excluirProduto("123");
-//        dbProdutos.listaProdutos();
+//      dbProdutos.editarProduto(new Produto("123", "GTA 5 - PS4", 99.99));
+//      dbProdutos.excluirProduto("123");
+//      dbProdutos.listaProdutos();
 
+        //TEste de inclusão de cliente tudo validado por CPF
+        System.out.println("============================");
+        System.out.println("========Teste de Cliente Cadastrado=========");
+        System.out.println("============================");
+        Cliente client = new Cliente("Joss","78178569142","decaelgomes","123456","acula","decaelgomes@gmail.com");
+        bdClientes.cadastrarCliente(client);
+        bdClientes.listaClientes();
 
     }
 }
