@@ -4,29 +4,29 @@ import java.util.ArrayList;
 
 public class Cliente {
 
-    private String nome;
-    private String cpf;
-    private String usuario;
-    private String senha;
-    private String endereco;
-    private String email;
-    private Double saldo;
-    private final Carrinho carrinho = new Carrinho();
-    private ArrayList<ComprasRealizadas> comprasRealizadas;
-    private FormasPagamento formaPagamento;
+	private String nome;
+	private String cpf;
+	private String usuario;
+	private String senha;
+	private String endereco;
+	private String email;
+	public final Carrinho carrinho = new Carrinho();
+	private double saldo;
+	private ArrayList<ComprasRealizadas> comprasRealizadas;
+	private FormasPagamento formaPagamento;
 
-    public Cliente() {
-        // Construtor vazio para a criação de Clientes sem a necessidade de passar os parametros
-    }
+	public Cliente() {
+		// Construtor vazio para a criação de Clientes sem a necessidade de passar os parametros
+	}
 
-    public Cliente(String nome, String cpf, String usuario, String senha, String endereco, String email, Double saldo) {
-        this.nome = nome;
-        this.cpf = cpf;
+	public Cliente(String nome, String cpf, String usuario, String senha, String endereco, String email, double saldo) {
+		this.nome = nome;
+		this.cpf = cpf;
 		this.usuario = usuario;
 		this.senha = senha;
 		this.endereco = endereco;
 		this.email = email;
-		this.saldo= saldo;
+		this.saldo = saldo;
 	}
 
 

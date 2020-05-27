@@ -17,16 +17,23 @@ public class Programa {
         Produto produto2 = new Produto("1234", "Call of Duty: Modern Warfare", 95.93);
         dbProdutos.cadastrarProduto(produto2);
 
-        Cliente client = new Cliente("Joss", "70150465122", "decaelgomes", "123456", "acula", "decaelgomes@gmail.com");
+        Cliente client = new Cliente("Joss", "70150465122", "decaelgomes", "123456", "acula", "decaelgomes@gmail.com", 5000.00);
+        client.carrinho.adicionarProduto(produto.getCodigo(), 2);
         dbClientes.cadastrarCliente(client);
 
-        Cliente client2 = new Cliente("Carlos", "70150465112", "decaelgomes", "123456", "acula", "carlos@gmail.com");
+        System.out.println("Lista de produtos no carrinho >>>" + client.carrinho.toString());
+
+
+        Cliente client2 = new Cliente("Carlos", "70150465112", "decaelgomes", "123456", "acula", "carlos@gmail.com", 0.0);
+
+
         dbClientes.cadastrarCliente(client2);
         dbClientes.listaClientes();
 
-        System.out.println("Teste de busca de cliente por CPF");
-        Cliente retornoBuscaPorCPF = dbClientes.buscaClientePorCPF("1234");
-        System.out.println(retornoBuscaPorCPF);
+
+//        System.out.println("Teste de busca de cliente por CPF");
+//        Cliente retornoBuscaPorCPF = dbClientes.buscaClientePorCPF("1234");
+//        System.out.println(retornoBuscaPorCPF);
 
 //        Produto retorno = dbProdutos.buscaProdutoPorCodigo("12345");
 //        System.out.println("retorno >>>> " + retorno);

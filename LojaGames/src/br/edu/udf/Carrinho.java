@@ -4,25 +4,28 @@ import java.util.ArrayList;
 
 public class Carrinho {
 
-    private ArrayList<Produto> produtos;
-    private DBProdutos banco;
+	private final ArrayList<Produto> produtos = new ArrayList<>();
+	private final DBProdutos bancoProdutos = new DBProdutos();
 
-    public boolean adicionarProduto(String codigoProduto, Integer quantidade) {
-        boolean retorno = false;
-        if (quantidade == null || quantidade == 0) {
-            System.out.println("Quantidade tem de ser maior do que zero.");
-        }
+	public boolean adicionarProduto(String codigoProduto, Integer quantidade) {
+		boolean retorno = false;
+		if (quantidade == null || quantidade == 0) {
+			System.out.println("Quantidade tem de ser maior do que zero.");
+		}
 
-        Produto produto = banco.buscaProdutoPorCodigo(codigoProduto);
-        if (produto.getQuantidadeDisponivel() < quantidade) {
-            System.out.println("Infelimente só temos " +
+		Produto produto = bancoProdutos.buscaProdutoPorCodigo(codigoProduto);
+		if (produto.getQuantidadeDisponivel() < quantidade) {
+			System.out.println("Infelimente só temos " +
                     produto.getQuantidadeDisponivel() + " itens deste produto. ");
         } else {
-            if (!this.produtos.add(produto)) {
-                System.out.println("Falha ao adicionar o produto ao carrinho.");
-            }
-            retorno = true;
-        }
+			for (int contador = 0; contador < quantidade; contador++) {
+				if (!this.produtos.add(produto)) {
+					System.out.println("Falha ao adicionar o produto ao carrinho.");
+				}
+			}
+
+			retorno = true;
+		}
 
         return retorno;
     }
@@ -30,7 +33,7 @@ public class Carrinho {
 	public boolean removerProduto(String codigoProduto) {
 		boolean retorno = false;
 
-		Produto produto = banco.buscaProdutoPorCodigo(codigoProduto);
+		Produto produto = bancoProdutos.buscaProdutoPorCodigo(codigoProduto);
 		if (this.produtos.contains(produto)) {
 			produtos.remove(produto);
 			System.out.println("Produto removido com sucesso!");
@@ -48,9 +51,10 @@ public class Carrinho {
 
 	@Override
 	public String toString() {
-		return "Carrinho{" +
-				"produtos=" + produtos +
-				'}';
+		return "Carrinho { " + produtos +
+				'}' +
+				" Quantidade de itens no carrinho = " +
+				this.quantidadeItens();
 	}
 
 
