@@ -12,7 +12,7 @@ public class TestaCliente {
 
         //altera Produto
 
-        Cliente cliente1 = new Cliente("Joss", "70150465122", "asdfisdf", "d@gmail.com", 5000.00);
+        Cliente cliente1 = new Cliente("Algoz", "70150465122", "asdfisdf", "d@mail.com", 10000.00);
         dbClientes.editarCliente(cliente1);
 
         //Excluir
