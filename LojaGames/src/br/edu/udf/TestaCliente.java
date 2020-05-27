@@ -3,7 +3,6 @@ package br.edu.udf;
 public class TestaCliente {
     public static void main(String[] args) {
         DBClientes dbClientes = new DBClientes();
-
         Cliente cliente = new Cliente("Joss", "70150465122", "acula", "decaelgomes@gmail.com", 5000.00);
 
 
@@ -12,8 +11,9 @@ public class TestaCliente {
         dbClientes.listaClientes();
 
         //altera Produto
-        Produto produto1 = new Produto("1234", "Call of Duty: Modern Warfare", 100.02);
-        dbClientes.editarCliente();
+
+        Cliente cliente1 = new Cliente("Joss", "70150465122", "asdfisdf", "d@gmail.com", 5000.00);
+        dbClientes.editarCliente(cliente1);
 
         //Excluir
         System.out.println(dbClientes.excluirCliente("70150465122"));
