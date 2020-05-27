@@ -11,12 +11,12 @@ public class DBClientes {
     }
 
     public Cliente buscaClientePorCPF(String CPF) {
+
         for (Cliente cliente : clientes) {
             if (cliente.getCpf() == CPF) {
                 return cliente;
             }
         }
-        //System.out.println("Cliente inexistente.");
         return null;
     }
 
@@ -29,7 +29,7 @@ public class DBClientes {
     public boolean cadastrarCliente(Cliente clienteRecebido) {
         boolean retorno = false;
 
-        if (validarCliente(clienteRecebido) == true) {
+        if (validarCliente(clienteRecebido)) {
             if (clientes.add(clienteRecebido)) {
                 retorno = true;
             }
@@ -71,6 +71,17 @@ public class DBClientes {
         return retorno;
     }
 
+    private boolean isCPFUnico(String cpf) {
+        boolean retorno = true;
+
+        for (Cliente cliente : clientes) {
+            if (cliente.getCpf().equals(cpf)) {
+                retorno = false;
+            }
+        }
+        return retorno;
+    }
+
     public boolean validarCliente(Cliente clienteRecebido) {
         boolean retorno = false;
 
@@ -80,31 +91,28 @@ public class DBClientes {
         boolean isSenhaValid = false;
         boolean isEnderecoValid = false;
         boolean isEmailValid = false;
-        boolean isClienteExistente = false;
+        boolean isCPFUnico = false;
 
         isNomeValid = uteis.isNomeValid(clienteRecebido.getNome());
         isCPFValid = uteis.isCPFValid(clienteRecebido.getCpf());
+        isCPFUnico = this.isCPFUnico(clienteRecebido.getCpf());
         isUsuarioValid = uteis.isNomeValid(clienteRecebido.getUsuario());
         isSenhaValid = uteis.isNomeValid(clienteRecebido.getSenha());
         isEnderecoValid = uteis.isNomeValid(clienteRecebido.getEndereco());
         isEmailValid = uteis.isEmailValid(clienteRecebido.getEmail());
 
-        if (buscaClientePorCPF(clienteRecebido.getCpf()) == null) ;
-        {
-            isClienteExistente = true;
-        }
 
-        if (isNomeValid && isCPFValid && isUsuarioValid && isSenhaValid && isEnderecoValid && isEmailValid && isClienteExistente) {
+        if (isNomeValid && isCPFValid && isUsuarioValid && isSenhaValid && isEnderecoValid && isEmailValid && isCPFUnico) {
             retorno = true;
         } else {
             System.out.println("Usuaro com informacao incorreta");
             System.out.println("Itens incorretos: ");
-            if (isNomeValid == false) System.out.println("Nome");
-            if (isCPFValid == false) System.out.println("CPF");
-            if (isUsuarioValid == false) System.out.println("Usuario");
-            if (isSenhaValid == false) System.out.println("Senha");
-            if (isEnderecoValid == false) System.out.println("Endereco");
-            if (isEmailValid == false) System.out.println("Email");
+            if (!isNomeValid) System.out.println("Nome");
+            if (!isCPFValid || !isCPFUnico) System.out.println("CPF");
+            if (!isUsuarioValid) System.out.println("Usuario");
+            if (!isSenhaValid) System.out.println("Senha");
+            if (!isEnderecoValid) System.out.println("Endereco");
+            if (!isEmailValid) System.out.println("Email");
         }
 
         return retorno;

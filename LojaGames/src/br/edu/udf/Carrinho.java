@@ -4,21 +4,28 @@ import java.util.ArrayList;
 
 public class Carrinho {
 
-	private ArrayList<Produto> produtos;
-	private String cpf;
-	private DBProdutos banco;
-	private String CPFCliente;
+    private ArrayList<Produto> produtos;
+    private DBProdutos banco;
 
-	public boolean adicionarProduto(String codigoProduto) {
-		boolean retorno = false;
-		Produto produto = banco.buscaProdutoPorCodigo(codigoProduto);
-		this.produtos.add(produto);
-		if (this.produtos.contains(produto)) {
-			System.out.println("Produto adicionado com sucesso!");
-			retorno = true;
-		}
-		return retorno;
-	}
+    public boolean adicionarProduto(String codigoProduto, Integer quantidade) {
+        boolean retorno = false;
+        if (quantidade == null || quantidade == 0) {
+            System.out.println("Quantidade tem de ser maior do que zero.");
+        }
+
+        Produto produto = banco.buscaProdutoPorCodigo(codigoProduto);
+        if (produto.getQuantidadeDisponivel() < quantidade) {
+            System.out.println("Infelimente só temos " +
+                    produto.getQuantidadeDisponivel() + " itens deste produto. ");
+        } else {
+            if (!this.produtos.add(produto)) {
+                System.out.println("Falha ao adicionar o produto ao carrinho.");
+            }
+            retorno = true;
+        }
+
+        return retorno;
+    }
 
 	public boolean removerProduto(String codigoProduto) {
 		boolean retorno = false;

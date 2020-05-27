@@ -3,37 +3,30 @@ package br.edu.udf;
 import java.util.ArrayList;
 
 public class Cliente {
-	
-	private int idCliente;
-	private String nome;
-	private String cpf;
-	private String usuario;
-	private String senha;
-	private String endereco;
-	private String email;
-	private ArrayList<ComprasRealizadas> comprasRealizadas;
-	private FormasPagamento formaPagamento;
-	
-	public Cliente() {
-		// Construtor vazio para a criação de Clientes sem a necessidade de passar os parametros
-	}
 
-	public Cliente(String nome, String cpf, String usuario, String senha, String endereco, String email) {
-		this.nome = nome;
-		this.cpf = cpf;
+    private String nome;
+    private String cpf;
+    private String usuario;
+    private String senha;
+    private String endereco;
+    private String email;
+    private final Carrinho carrinho = new Carrinho();
+    private ArrayList<ComprasRealizadas> comprasRealizadas;
+    private FormasPagamento formaPagamento;
+
+    public Cliente() {
+        // Construtor vazio para a criação de Clientes sem a necessidade de passar os parametros
+    }
+
+    public Cliente(String nome, String cpf, String usuario, String senha, String endereco, String email) {
+        this.nome = nome;
+        this.cpf = cpf;
 		this.usuario = usuario;
 		this.senha = senha;
 		this.endereco = endereco;
 		this.email = email;
 	}
 
-	public int getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(int idCliente) {
-		this.idCliente = idCliente;
-	}
 
 	public String getNome() {
 		return nome;
@@ -102,7 +95,6 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return "Cliente{" +
-				"idCliente=" + idCliente +
 				", nome='" + nome + '\'' +
 				", cpf='" + cpf + '\'' +
 				", usuario='" + usuario + '\'' +
