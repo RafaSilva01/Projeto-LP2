@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Carrinho {
 
 	private ArrayList<Produto> produtos;
+	private String cpf;
 	private DBProdutos banco;
 	private String CPFCliente;
 

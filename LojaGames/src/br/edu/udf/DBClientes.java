@@ -1,7 +1,8 @@
 package br.edu.udf;
+
 import java.util.ArrayList;
 
-public class BDClientes {
+public class DBClientes {
     private static final ArrayList<Cliente> clientes = new ArrayList<>();
     private final Uteis uteis = new Uteis();
 
@@ -28,10 +29,9 @@ public class BDClientes {
     public boolean cadastrarCliente(Cliente clienteRecebido) {
         boolean retorno = false;
 
-        if (validarCliente(clienteRecebido)==true) {
+        if (validarCliente(clienteRecebido) == true) {
             if (clientes.add(clienteRecebido)) {
                 retorno = true;
-                System.out.println("Cliente cadastrado com sucesso!");
             }
         }
         return retorno;
@@ -53,7 +53,7 @@ public class BDClientes {
     public boolean editarCliente(Cliente clienteRecebido) {
         boolean retorno = false;
 
-        if (validarCliente(clienteRecebido)==true) {
+        if (validarCliente(clienteRecebido) == true) {
             for (Cliente cliente : clientes) {
                 if (cliente.getCpf() == clienteRecebido.getCpf()) {
                     retorno = true;
@@ -89,21 +89,22 @@ public class BDClientes {
         isEnderecoValid = uteis.isNomeValid(clienteRecebido.getEndereco());
         isEmailValid = uteis.isEmailValid(clienteRecebido.getEmail());
 
-        if (buscaClientePorCPF(clienteRecebido.getCpf()) == null);{
+        if (buscaClientePorCPF(clienteRecebido.getCpf()) == null) ;
+        {
             isClienteExistente = true;
         }
 
         if (isNomeValid && isCPFValid && isUsuarioValid && isSenhaValid && isEnderecoValid && isEmailValid && isClienteExistente) {
             retorno = true;
-        }else{
+        } else {
             System.out.println("Usuaro com informacao incorreta");
             System.out.println("Itens incorretos: ");
-            if(isNomeValid == false)  System.out.println("Nome");
-            if(isCPFValid == false)  System.out.println("CPF");
-            if(isUsuarioValid == false)  System.out.println("Usuario");
-            if(isSenhaValid == false)  System.out.println("Senha");
-            if(isEnderecoValid == false)  System.out.println("Endereco");
-            if(isEmailValid == false)  System.out.println("Email");
+            if (isNomeValid == false) System.out.println("Nome");
+            if (isCPFValid == false) System.out.println("CPF");
+            if (isUsuarioValid == false) System.out.println("Usuario");
+            if (isSenhaValid == false) System.out.println("Senha");
+            if (isEnderecoValid == false) System.out.println("Endereco");
+            if (isEmailValid == false) System.out.println("Email");
         }
 
         return retorno;
