@@ -43,6 +43,7 @@ public class DBClientes {
         if (clienteParaExcluir != null) {
             if (clientes.remove(clienteParaExcluir)) {
                 retorno = true;
+                System.out.println("Cliente excluido com sucesso");
             }
         } else {
             System.out.println("Nao foi possivel excluir o cliente.");

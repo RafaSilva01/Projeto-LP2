@@ -8,6 +8,7 @@ public class TestaProduto {
     public static void main(String[] args) {
         DBProdutos dbProdutos = new DBProdutos();
 
+        //Novo produto criado
         Produto produto = new Produto();
         produto.setNome("GTA 5");
         produto.setCodigo("123");
@@ -20,7 +21,7 @@ public class TestaProduto {
 
         //altera Produto
         Produto produto1 = new Produto("1234", "Call of Duty: Modern Warfare", 100.02);
-        dbProdutos.editarProduto();
+        dbProdutos.editarProduto(produto);
 
         //Excluir
         System.out.println(dbProdutos.excluirProduto("123"));
