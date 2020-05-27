@@ -53,7 +53,7 @@ public class DBClientes {
     public boolean editarCliente(Cliente clienteRecebido) {
         boolean retorno = false;
 
-        if (validarCliente(clienteRecebido) == true) {
+        if (validarCliente(clienteRecebido)) {
             for (Cliente cliente : clientes) {
                 if (cliente.getCpf() == clienteRecebido.getCpf()) {
                     retorno = true;
@@ -61,7 +61,7 @@ public class DBClientes {
             }
         }
 
-        if (retorno == true) {
+        if (retorno) {
             this.excluirCliente(clienteRecebido.getCpf());
             this.cadastrarCliente(clienteRecebido);
         } else {
@@ -87,8 +87,6 @@ public class DBClientes {
 
         boolean isNomeValid = false;
         boolean isCPFValid = false;
-        boolean isUsuarioValid = false;
-        boolean isSenhaValid = false;
         boolean isEnderecoValid = false;
         boolean isEmailValid = false;
         boolean isCPFUnico = false;
@@ -96,21 +94,17 @@ public class DBClientes {
         isNomeValid = uteis.isNomeValid(clienteRecebido.getNome());
         isCPFValid = uteis.isCPFValid(clienteRecebido.getCpf());
         isCPFUnico = this.isCPFUnico(clienteRecebido.getCpf());
-        isUsuarioValid = uteis.isNomeValid(clienteRecebido.getUsuario());
-        isSenhaValid = uteis.isNomeValid(clienteRecebido.getSenha());
         isEnderecoValid = uteis.isNomeValid(clienteRecebido.getEndereco());
         isEmailValid = uteis.isEmailValid(clienteRecebido.getEmail());
 
 
-        if (isNomeValid && isCPFValid && isUsuarioValid && isSenhaValid && isEnderecoValid && isEmailValid && isCPFUnico) {
+        if (isNomeValid && isCPFValid && isEnderecoValid && isEmailValid && isCPFUnico) {
             retorno = true;
+            System.out.println(clienteRecebido.getNome() + " foi cadastrado com sucesso !");
         } else {
-            System.out.println("Usuaro com informacao incorreta");
             System.out.println("Itens incorretos: ");
             if (!isNomeValid) System.out.println("Nome");
             if (!isCPFValid || !isCPFUnico) System.out.println("CPF");
-            if (!isUsuarioValid) System.out.println("Usuario");
-            if (!isSenhaValid) System.out.println("Senha");
             if (!isEnderecoValid) System.out.println("Endereco");
             if (!isEmailValid) System.out.println("Email");
         }
@@ -119,4 +113,16 @@ public class DBClientes {
     }
 
 
+    public boolean adicionarComprovante(Comprovante comprovante, double totalCompra) {
+        boolean retorno = false;
+        for (Cliente cliente : clientes) {
+            if (cliente.getCpf() == comprovante.getCpf()) {
+                cliente.setSaldo(cliente.getSaldo() - totalCompra);
+                cliente.adicionarComprovante(comprovante);
+                cliente.carrinho = new Carrinho();
+                retorno = true;
+            }
+        }
+        return retorno;
+    }
 }

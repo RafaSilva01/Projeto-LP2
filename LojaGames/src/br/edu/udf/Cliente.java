@@ -6,24 +6,19 @@ public class Cliente {
 
 	private String nome;
 	private String cpf;
-	private String usuario;
-	private String senha;
 	private String endereco;
 	private String email;
-	public final Carrinho carrinho = new Carrinho();
+	public Carrinho carrinho = new Carrinho();
 	private double saldo;
-	private ArrayList<ComprasRealizadas> comprasRealizadas;
-	private FormasPagamento formaPagamento;
+	private ArrayList<Comprovante> comprasRealizadas = new ArrayList<>();
 
 	public Cliente() {
 		// Construtor vazio para a criação de Clientes sem a necessidade de passar os parametros
 	}
 
-	public Cliente(String nome, String cpf, String usuario, String senha, String endereco, String email, double saldo) {
+	public Cliente(String nome, String cpf, String endereco, String email, double saldo) {
 		this.nome = nome;
 		this.cpf = cpf;
-		this.usuario = usuario;
-		this.senha = senha;
 		this.endereco = endereco;
 		this.email = email;
 		this.saldo = saldo;
@@ -43,22 +38,6 @@ public class Cliente {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
 	}
 
 	public String getEndereco() {
@@ -81,39 +60,48 @@ public class Cliente {
 		return saldo;
 	}
 
-	public void setSaldo(Double saldo) { this.saldo = saldo;}
+	public void setSaldo(Double saldo) {
+		this.saldo = saldo;
+	}
 
-	public ArrayList<ComprasRealizadas> getComprasRealizadas() {
+	public ArrayList<Comprovante> getComprasRealizadas() {
 		return comprasRealizadas;
 	}
 
-	public void setComprasRealizadas(ArrayList<ComprasRealizadas> comprasRealizadas) {
+	public void setComprasRealizadas(ArrayList<Comprovante> comprasRealizadas) {
 		this.comprasRealizadas = comprasRealizadas;
 	}
 
-	public FormasPagamento getFormaPagamento() {
-		return formaPagamento;
+
+	public void depositaSaldo(Double valor) {
+		this.saldo += valor;
 	}
 
-	public void depositaSaldo(Double valor){
-    	this.saldo+=valor;
-	}
-
-	public void setFormaPagamento(FormasPagamento formaPagamento) {
-		this.formaPagamento = formaPagamento;
-	}
 
 	@Override
 	public String toString() {
 		return "Cliente{" +
-				", nome='" + nome + '\'' +
+				"nome='" + nome + '\'' +
 				", cpf='" + cpf + '\'' +
-				", usuario='" + usuario + '\'' +
-				", senha='" + senha + '\'' +
 				", endereco='" + endereco + '\'' +
 				", email='" + email + '\'' +
+				", carrinho=" + carrinho +
+				", saldo=" + saldo +
 				", comprasRealizadas=" + comprasRealizadas +
-				", formaPagamento=" + formaPagamento +
 				'}';
+	}
+
+	public Carrinho getCarrinho() {
+		return this.carrinho;
+	}
+
+	public void adicionarComprovante(Comprovante comprovante) {
+		this.comprasRealizadas.add(comprovante);
+	}
+
+	public void listaComprovantes() {
+		for (Comprovante comprovante : comprasRealizadas) {
+			comprovante.exibirComprovante();
+		}
 	}
 }

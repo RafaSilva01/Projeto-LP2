@@ -1,6 +1,8 @@
-package br.edu.udf;
+package testes;
 
-public class Programa {
+import br.edu.udf.*;
+
+public class testePagamento {
     public static void main(String[] args) {
         DBProdutos dbProdutos = new DBProdutos();
         DBClientes dbClientes = new DBClientes();
@@ -30,7 +32,5 @@ public class Programa {
 
         Cliente clienteAtualizado = dbClientes.buscaClientePorCPF(cliente.getCpf());
         clienteAtualizado.listaComprovantes();
-
-
     }
 }

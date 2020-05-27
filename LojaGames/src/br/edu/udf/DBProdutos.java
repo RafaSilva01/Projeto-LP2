@@ -117,5 +117,18 @@ public class DBProdutos {
         return retorno;
     }
 
+    public boolean diminuirEstoque(Carrinho carrinho) {
+        ArrayList<Produto> produtosDoCarrinho = carrinho.getProdutos();
+        int contadorProdutosRemovidos = 0;
+        for (Produto produto : produtos) {
+            for (Produto produtoCarrinho : produtosDoCarrinho) {
+                if (produto.getCodigo() == produtoCarrinho.getCodigo()) {
+                    produto.diminuirQuantidade(1);
+                    contadorProdutosRemovidos++;
+                }
+            }
+        }
+        return produtosDoCarrinho.size() == contadorProdutosRemovidos;
+    }
 }
 
