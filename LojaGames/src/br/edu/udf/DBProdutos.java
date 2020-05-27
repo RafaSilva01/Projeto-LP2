@@ -86,6 +86,7 @@ public class DBProdutos {
         } else {
             System.out.println("Nao foi possivel excluir o produto.");
         }
+        //Tecnicamente não precisa da informação de retorno na função
         return retorno;
     }
 

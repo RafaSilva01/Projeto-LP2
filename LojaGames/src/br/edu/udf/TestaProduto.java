@@ -29,8 +29,6 @@ public class TestaProduto {
         produto2.setPrecoOriginal(80.03);
         produto2.aumentarQuantidade(7);
 
-
-
         //Cadastra produto Produto
         dbProdutos.cadastrarProduto(produto);
         dbProdutos.cadastrarProduto(produto1);
@@ -38,8 +36,16 @@ public class TestaProduto {
         dbProdutos.listaProdutos();
 
         //Edita Produto
-        //Produto produto1 = new Produto("1234", "Call of Duty: Modern Warfare", 100.02);
-        //dbProdutos.editarProduto(produto);
+        //Novo produto criado 3, com o codigo de outro produto no caso, produto 1
+        Produto produto3 = new Produto();
+        produto3.setNome("Medal of Honor Frontline");
+        produto3.setCodigo("004");
+        produto3.setPrecoOriginal(600.00);
+        produto3.aumentarQuantidade(1);
+
+        //Alterando as informações do produto 1, usando código desse produto.
+        dbProdutos.editarProduto(produto3);
+        dbProdutos.buscaProdutoPorCodigo("001");
 
         //Excluir
         System.out.println(dbProdutos.excluirProduto("001"));
