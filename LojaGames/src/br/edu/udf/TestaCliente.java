@@ -17,8 +17,8 @@ public class TestaCliente {
         dbClientes.listaClientes();
 
         //Editar Cliente
-        //Cliente cliente1 = new Cliente("Algoz", "70150165122", "asdfisdf", "d@mail.com", 10000.00);
-        //dbClientes.editarCliente(cliente);
+        Cliente cliente3 = new Cliente("Morgana", "82520465214", "As Brumas de Avalon", "nemomerlintemchance@gmail.com", 100000000.00);
+        dbClientes.editarCliente(cliente3);
 
         //Excluir Cliente
         dbClientes.excluirCliente("70150465122");

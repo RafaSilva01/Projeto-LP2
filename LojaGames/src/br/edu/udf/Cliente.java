@@ -80,7 +80,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente{" +
+		return "Cliente { " +
 				"nome='" + nome + '\'' +
 				", cpf='" + cpf + '\'' +
 				", endereco='" + endereco + '\'' +
@@ -88,7 +88,7 @@ public class Cliente {
 				", carrinho=" + carrinho +
 				", saldo=" + saldo +
 				", comprasRealizadas=" + comprasRealizadas +
-				'}';
+				" } ";
 	}
 
 	public Carrinho getCarrinho() {

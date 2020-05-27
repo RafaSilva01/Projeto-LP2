@@ -39,8 +39,8 @@ public class TestaProduto {
         //Novo produto criado 3, com o codigo de outro produto no caso, produto 1
         Produto produto3 = new Produto();
         produto3.setNome("Medal of Honor Frontline");
-        produto3.setCodigo("004");
-        produto3.setPrecoOriginal(600.00);
+        produto3.setCodigo("0010");
+        produto3.setPrecoOriginal(60.00);
         produto3.aumentarQuantidade(1);
 
         //Alterando as informações do produto 1, usando código desse produto.
