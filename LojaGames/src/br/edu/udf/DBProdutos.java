@@ -80,8 +80,8 @@ public class DBProdutos {
         Produto produtoParaExcluir = buscaProdutoPorCodigo(codigoProduto);
         if (produtoParaExcluir != null) {
             if (produtos.remove(produtoParaExcluir)) {
-                System.out.printf("Produto codigo ("+codigoProduto+") excluido.");
                 retorno = true;
+                System.out.printf("Produto codigo ("+codigoProduto+") excluido.");
             }
         } else {
             System.out.println("Nao foi possivel excluir o produto.");
