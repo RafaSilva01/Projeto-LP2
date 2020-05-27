@@ -80,13 +80,13 @@ public class DBProdutos {
         Produto produtoParaExcluir = buscaProdutoPorCodigo(codigoProduto);
         if (produtoParaExcluir != null) {
             if (produtos.remove(produtoParaExcluir)) {
+                System.out.printf("Produto codigo ("+codigoProduto+") excluido.");
                 retorno = true;
             }
         } else {
             System.out.println("Nao foi possivel excluir o produto.");
         }
         return retorno;
-
     }
 
     public boolean editarProduto(Produto produtoRecebido) {
@@ -127,7 +127,7 @@ public class DBProdutos {
                     contadorProdutosRemovidos++;
                 }
             }
-        }
+        }System.out.println("Nao foi possivel excluir o produto.");
         return produtosDoCarrinho.size() == contadorProdutosRemovidos;
     }
 }
