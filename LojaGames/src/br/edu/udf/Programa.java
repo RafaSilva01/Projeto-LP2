@@ -13,7 +13,6 @@ public class Programa {
         produto.aumentarQuantidade(10);
         dbProdutos.cadastrarProduto(produto);
 
-
         Produto produto2 = new Produto("1234", "Call of Duty: Modern Warfare", 100.02);
         produto2.aumentarQuantidade(1);
         dbProdutos.cadastrarProduto(produto2);

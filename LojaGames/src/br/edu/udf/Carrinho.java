@@ -7,7 +7,6 @@ public class Carrinho {
 	private final ArrayList<Produto> produtos = new ArrayList<>();
 	private final DBProdutos bancoProdutos = new DBProdutos();
 
-
 	public boolean adicionarProduto(String codigoProduto, Integer quantidade) {
 		boolean retorno = false;
 		if (quantidade == null || quantidade == 0) {
@@ -69,7 +68,6 @@ public class Carrinho {
 				" Quantidade de itens no carrinho = " +
 				this.quantidadeItens();
 	}
-
 
 	public ArrayList<Produto> getProdutos() {
 		return this.produtos;
