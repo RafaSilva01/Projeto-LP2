@@ -7,6 +7,7 @@ public class Carrinho {
 	private final ArrayList<Produto> produtos = new ArrayList<>();
 	private final DBProdutos bancoProdutos = new DBProdutos();
 
+
 	public boolean adicionarProduto(String codigoProduto, Integer quantidade) {
 		boolean retorno = false;
 		if (quantidade == null || quantidade == 0) {
@@ -16,8 +17,8 @@ public class Carrinho {
 		Produto produto = bancoProdutos.buscaProdutoPorCodigo(codigoProduto);
 		if (produto.getQuantidadeDisponivel() < quantidade) {
 			System.out.println("Infelimente só temos " +
-                    produto.getQuantidadeDisponivel() + " itens deste produto. ");
-        } else {
+					produto.getQuantidadeDisponivel() + " itens deste produto. ");
+		} else {
 			for (int contador = 0; contador < quantidade; contador++) {
 				if (!this.produtos.add(produto)) {
 					System.out.println("Falha ao adicionar o produto ao carrinho.");
@@ -27,8 +28,8 @@ public class Carrinho {
 			retorno = true;
 		}
 
-        return retorno;
-    }
+		return retorno;
+	}
 
 	public boolean removerProduto(String codigoProduto) {
 		boolean retorno = false;
@@ -51,6 +52,15 @@ public class Carrinho {
 			System.out.println(produto.toString());
 		}
 	}
+
+	public double somaCarrinho (){
+		double precoTotal=0;
+		for ( Produto produto: produtos) {
+			precoTotal+=produto.getPrecoFinal();
+		}
+		return precoTotal;
+	}
+
 
 
 	@Override

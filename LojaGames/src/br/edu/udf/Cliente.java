@@ -29,7 +29,6 @@ public class Cliente {
 		this.saldo = saldo;
 	}
 
-
 	public String getNome() {
 		return nome;
 	}

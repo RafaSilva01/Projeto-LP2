@@ -4,26 +4,28 @@ public class Programa {
     public static void main(String[] args) {
         DBProdutos dbProdutos = new DBProdutos();
         DBClientes dbClientes = new DBClientes();
+        DBLoja dbloja = new DBLoja();
 
         Produto produto = new Produto();
 
         produto.setNome("GTA 5");
         produto.setCodigo("123");
-        produto.setPrecoOriginal(119.89);
+        produto.setPrecoOriginal(50.01);
         produto.aumentarQuantidade(10);
         dbProdutos.cadastrarProduto(produto);
 
 
-        Produto produto2 = new Produto("1234", "Call of Duty: Modern Warfare", 95.93);
+        Produto produto2 = new Produto("1234", "Call of Duty: Modern Warfare", 100.02);
         dbProdutos.cadastrarProduto(produto2);
 
         Cliente client = new Cliente("Joss", "70150465122", "decaelgomes", "123456", "acula", "decaelgomes@gmail.com", 5000.00);
-        client.carrinho.adicionarProduto(produto.getCodigo(), 3);
-        client.carrinho.removerProduto(produto.getCodigo());
+        client.carrinho.adicionarProduto(produto.getCodigo(), 2);
+        //client.carrinho.removerProduto(produto.getCodigo());
         dbClientes.cadastrarCliente(client);
-
+        System.out.println(client.carrinho.somaCarrinho());
         System.out.println("Lista de produtos no carrinho >>>");
         client.carrinho.listaCarrinho();
+        dbloja.finalizarCompra(client.getCpf());
 
 
         Cliente client2 = new Cliente("Carlos", "70150465112", "decaelgomes", "123456", "acula", "carlos@gmail.com", 0.0);
