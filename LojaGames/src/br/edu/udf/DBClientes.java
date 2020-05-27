@@ -48,7 +48,6 @@ public class DBClientes {
         } else {
             System.out.println("Nao foi possivel excluir o cliente.");
         }
-        //Tecnicamente não precisa da informação de retorno na função
         return retorno;
     }
 
