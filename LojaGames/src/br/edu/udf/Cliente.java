@@ -10,6 +10,7 @@ public class Cliente {
     private String senha;
     private String endereco;
     private String email;
+    private Double saldo;
     private final Carrinho carrinho = new Carrinho();
     private ArrayList<ComprasRealizadas> comprasRealizadas;
     private FormasPagamento formaPagamento;
@@ -18,13 +19,14 @@ public class Cliente {
         // Construtor vazio para a criação de Clientes sem a necessidade de passar os parametros
     }
 
-    public Cliente(String nome, String cpf, String usuario, String senha, String endereco, String email) {
+    public Cliente(String nome, String cpf, String usuario, String senha, String endereco, String email, Double saldo) {
         this.nome = nome;
         this.cpf = cpf;
 		this.usuario = usuario;
 		this.senha = senha;
 		this.endereco = endereco;
 		this.email = email;
+		this.saldo= saldo;
 	}
 
 
@@ -76,6 +78,12 @@ public class Cliente {
 		this.email = email;
 	}
 
+	public Double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(Double saldo) { this.saldo = saldo;}
+
 	public ArrayList<ComprasRealizadas> getComprasRealizadas() {
 		return comprasRealizadas;
 	}
@@ -86,6 +94,10 @@ public class Cliente {
 
 	public FormasPagamento getFormaPagamento() {
 		return formaPagamento;
+	}
+
+	public void depositaSaldo(Double valor){
+    	this.saldo+=valor;
 	}
 
 	public void setFormaPagamento(FormasPagamento formaPagamento) {
