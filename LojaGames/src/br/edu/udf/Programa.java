@@ -18,17 +18,19 @@ public class Programa {
         dbProdutos.cadastrarProduto(produto2);
 
         Cliente client = new Cliente("Joss", "70150465122", "decaelgomes", "123456", "acula", "decaelgomes@gmail.com", 5000.00);
-        client.carrinho.adicionarProduto(produto.getCodigo(), 2);
+        client.carrinho.adicionarProduto(produto.getCodigo(), 3);
+        client.carrinho.removerProduto(produto.getCodigo());
         dbClientes.cadastrarCliente(client);
 
-        System.out.println("Lista de produtos no carrinho >>>" + client.carrinho.toString());
+        System.out.println("Lista de produtos no carrinho >>>");
+        client.carrinho.listaCarrinho();
 
 
         Cliente client2 = new Cliente("Carlos", "70150465112", "decaelgomes", "123456", "acula", "carlos@gmail.com", 0.0);
 
 
         dbClientes.cadastrarCliente(client2);
-        dbClientes.listaClientes();
+//        dbClientes.listaClientes();
 
 
 //        System.out.println("Teste de busca de cliente por CPF");

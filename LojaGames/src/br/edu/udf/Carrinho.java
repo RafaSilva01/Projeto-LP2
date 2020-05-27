@@ -36,7 +36,7 @@ public class Carrinho {
 		Produto produto = bancoProdutos.buscaProdutoPorCodigo(codigoProduto);
 		if (this.produtos.contains(produto)) {
 			produtos.remove(produto);
-			System.out.println("Produto removido com sucesso!");
+			System.out.println("Produto removido do carrinho com sucesso!");
 			retorno = true;
 		}
 		return retorno;
@@ -46,7 +46,11 @@ public class Carrinho {
 		return this.produtos.size();
 	}
 
-
+	public void listaCarrinho() {
+		for (Produto produto : produtos) {
+			System.out.println(produto.toString());
+		}
+	}
 
 
 	@Override
