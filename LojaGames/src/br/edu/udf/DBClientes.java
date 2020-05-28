@@ -70,7 +70,7 @@ public class DBClientes {
         return retorno;
 */
 
-        if (validarCliente(clienteRecebido,true)==true){
+       // if (validarCliente(clienteRecebido,true)==true){
             if(buscaClientePorCPF(clienteRecebido.getCpf())!=null){
                 this.excluirCliente(clienteRecebido.getCpf());
                 this.cadastrarCliente(clienteRecebido);
@@ -79,7 +79,7 @@ public class DBClientes {
                 System.out.println("Nao foi possivel editar as informacoes do cliente." +
                         "Cliente nao cadastrado na base de dados");
             }
-        }
+       // }
 
         return retorno;
     }
