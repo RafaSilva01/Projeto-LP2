@@ -70,7 +70,7 @@ public class DBClientes {
         return retorno;
 */
 
-       // if (validarCliente(clienteRecebido,true)==true){
+        if (validarCliente(clienteRecebido,true)==true){
             if(buscaClientePorCPF(clienteRecebido.getCpf())!=null){
                 this.excluirCliente(clienteRecebido.getCpf());
                 this.cadastrarCliente(clienteRecebido);
@@ -79,7 +79,7 @@ public class DBClientes {
                 System.out.println("Nao foi possivel editar as informacoes do cliente." +
                         "Cliente nao cadastrado na base de dados");
             }
-       // }
+        }
 
         return retorno;
     }
@@ -102,30 +102,39 @@ public class DBClientes {
         boolean isEnderecoValid = false;
         boolean isEmailValid = false;
         boolean isCPFUnico = false;
-        System.out.println("editar cliente "+isEditarCliente);
+
         if (isEditarCliente){
             isNomeValid = uteis.isNomeValid(clienteRecebido.getNome());
             isCPFValid = uteis.isCPFValid(clienteRecebido.getCpf());
             isEnderecoValid = uteis.isNomeValid(clienteRecebido.getEndereco());
             isEmailValid = uteis.isEmailValid(clienteRecebido.getEmail());
+            if (isNomeValid && isCPFValid && isEnderecoValid && isEmailValid) {
+                retorno = true;
+                System.out.println(clienteRecebido.getNome() + " foi cadastrado com sucesso !");
+            } else {
+                System.out.println("Itens incorretos: ");
+                if (!isNomeValid) System.out.println("Nome");
+                if (!isCPFValid) System.out.println("CPF");
+                if (!isEnderecoValid) System.out.println("Endereco");
+                if (!isEmailValid) System.out.println("Email");
+            }
         }else{
             isNomeValid = uteis.isNomeValid(clienteRecebido.getNome());
             isCPFValid = uteis.isCPFValid(clienteRecebido.getCpf());
             isEnderecoValid = uteis.isNomeValid(clienteRecebido.getEndereco());
             isEmailValid = uteis.isEmailValid(clienteRecebido.getEmail());
             isCPFUnico = this.isCPFUnico(clienteRecebido.getCpf());
-        }
 
-
-        if (isNomeValid && isCPFValid && isEnderecoValid && isEmailValid && isCPFUnico) {
-            retorno = true;
-            System.out.println(clienteRecebido.getNome() + " foi cadastrado com sucesso !");
-        } else {
-            System.out.println("Itens incorretos: ");
-            if (!isNomeValid) System.out.println("Nome");
-            if (!isCPFValid || !isCPFUnico) System.out.println("CPF");
-            if (!isEnderecoValid) System.out.println("Endereco");
-            if (!isEmailValid) System.out.println("Email");
+            if (isNomeValid && isCPFValid && isEnderecoValid && isEmailValid && isCPFUnico) {
+                retorno = true;
+                System.out.println(clienteRecebido.getNome() + " foi cadastrado com sucesso !");
+            } else {
+                System.out.println("Itens incorretos: ");
+                if (!isNomeValid) System.out.println("Nome");
+                if (!isCPFValid || !isCPFUnico) System.out.println("CPF");
+                if (!isEnderecoValid) System.out.println("Endereco");
+                if (!isEmailValid) System.out.println("Email");
+            }
         }
 
         return retorno;
