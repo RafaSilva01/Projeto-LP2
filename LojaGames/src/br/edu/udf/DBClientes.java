@@ -103,6 +103,8 @@ public class DBClientes {
         boolean isEmailValid = false;
         boolean isCPFUnico = false;
 
+        System.out.println("Nota de teste - Editar Cliente? "+isEditarCliente);
+
         if (isEditarCliente){
             isNomeValid = uteis.isNomeValid(clienteRecebido.getNome());
             isCPFValid = uteis.isCPFValid(clienteRecebido.getCpf());
