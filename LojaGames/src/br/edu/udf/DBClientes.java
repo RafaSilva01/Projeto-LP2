@@ -51,24 +51,6 @@ public class DBClientes {
 
     public boolean editarCliente(Cliente clienteRecebido) {
         boolean retorno = false;
-/*
-        if (validarCliente(clienteRecebido,true)) {
-            for (Cliente cliente : clientes) {
-                if (cliente.getCpf() == clienteRecebido.getCpf()) {
-                    retorno = true;
-                }
-            }
-        }
-
-        if (retorno) {
-            this.excluirCliente(clienteRecebido.getCpf());
-            this.cadastrarCliente(clienteRecebido);
-        } else {
-            System.out.println("Nao foi possivel editar as informacoes do cliente." +
-                    "Verifique se o cliente ja foi cadastrado.");
-        }
-        return retorno;
-*/
 
         if (validarCliente(clienteRecebido,true)==true){
             if(buscaClientePorCPF(clienteRecebido.getCpf())!=null){
@@ -80,7 +62,7 @@ public class DBClientes {
                         "Cliente nao cadastrado na base de dados");
             }
         }
-
+        if (retorno = true) System.out.println(clienteRecebido.getNome() + " foi cadastrado com sucesso !");
         return retorno;
     }
 
@@ -103,8 +85,6 @@ public class DBClientes {
         boolean isEmailValid = false;
         boolean isCPFUnico = false;
 
-        System.out.println("Nota de teste - Editar Cliente? "+isEditarCliente);
-
         if (isEditarCliente){
             isNomeValid = uteis.isNomeValid(clienteRecebido.getNome());
             isCPFValid = uteis.isCPFValid(clienteRecebido.getCpf());
@@ -112,7 +92,7 @@ public class DBClientes {
             isEmailValid = uteis.isEmailValid(clienteRecebido.getEmail());
             if (isNomeValid && isCPFValid && isEnderecoValid && isEmailValid) {
                 retorno = true;
-                System.out.println(clienteRecebido.getNome() + " foi cadastrado com sucesso !");
+
             } else {
                 System.out.println("Itens incorretos: ");
                 if (!isNomeValid) System.out.println("Nome");
@@ -120,7 +100,7 @@ public class DBClientes {
                 if (!isEnderecoValid) System.out.println("Endereco");
                 if (!isEmailValid) System.out.println("Email");
             }
-        }else{
+        }else {
             isNomeValid = uteis.isNomeValid(clienteRecebido.getNome());
             isCPFValid = uteis.isCPFValid(clienteRecebido.getCpf());
             isEnderecoValid = uteis.isNomeValid(clienteRecebido.getEndereco());
@@ -129,7 +109,6 @@ public class DBClientes {
 
             if (isNomeValid && isCPFValid && isEnderecoValid && isEmailValid && isCPFUnico) {
                 retorno = true;
-                System.out.println(clienteRecebido.getNome() + " foi cadastrado com sucesso !");
             } else {
                 System.out.println("Itens incorretos: ");
                 if (!isNomeValid) System.out.println("Nome");
@@ -138,7 +117,6 @@ public class DBClientes {
                 if (!isEmailValid) System.out.println("Email");
             }
         }
-
         return retorno;
     }
 
