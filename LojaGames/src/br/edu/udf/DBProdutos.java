@@ -35,7 +35,7 @@ public class DBProdutos {
         return true;
     }
 
-    private boolean isCodigoValid(String codigoRecebido) {
+    private boolean isCodigoValid(String codigoRecebido, boolean isEditaProduto) {
         boolean isCodigoValid = false;
         boolean isCodigoUnico = true;
 
@@ -45,12 +45,15 @@ public class DBProdutos {
             System.out.println("O codigo do produto esta invalido.");
         }
 
-        for (Produto produto : produtos) {
-            if (produto.getCodigo() == codigoRecebido) {
-                isCodigoUnico = false;
-                System.out.println("O codigo do produto precisa ser unico.");
+        if (!isEditaProduto) {
+            for (Produto produto : produtos) {
+                if (produto.getCodigo() == codigoRecebido) {
+                    isCodigoUnico = false;
+                    System.out.println("O codigo do produto precisa ser unico.");
+                }
             }
         }
+
 
         return isCodigoValid && isCodigoUnico;
     }
@@ -63,7 +66,7 @@ public class DBProdutos {
 
         isNomeValid = uteis.isNomeValid(produtoRecebido.getNome());
         isPrecoOriginalValid = isPrecoOriginalValid(produtoRecebido.getPrecoOriginal());
-        isCodigoValid = isCodigoValid(produtoRecebido.getCodigo());
+        isCodigoValid = isCodigoValid(produtoRecebido.getCodigo(), false);
 
         if (isNomeValid && isPrecoOriginalValid && isCodigoValid) {
             if (produtos.add(produtoRecebido)) {
@@ -81,10 +84,10 @@ public class DBProdutos {
         if (produtoParaExcluir != null) {
             if (produtos.remove(produtoParaExcluir)) {
                 retorno = true;
-                System.out.printf("Produto codigo ("+codigoProduto+") excluido");
+                System.out.println("Produto codigo (" + codigoProduto + ") excluido.");
             }
         } else {
-            System.out.println("Nao foi possivel excluir o produto");
+            System.out.println("Nao foi possivel excluir o produto.");
         }
         return retorno;
     }
@@ -97,17 +100,17 @@ public class DBProdutos {
 
         isNomeValid = uteis.isNomeValid(produtoRecebido.getNome());
         isPrecoOriginalValid = isPrecoOriginalValid(produtoRecebido.getPrecoOriginal());
-        isCodigoValid = isCodigoValid(produtoRecebido.getCodigo());
+        isCodigoValid = isCodigoValid(produtoRecebido.getCodigo(), true);
 
         if (isNomeValid && isPrecoOriginalValid && isCodigoValid) {
             for (Produto produto : produtos) {
-                if (produto.getCodigo() == produtoRecebido.getCodigo()) {
+                if (produto.getCodigo().equals(produtoRecebido.getCodigo())) {
                     retorno = true;
                 }
             }
         }
 
-        if (retorno == true) {
+        if (retorno) {
             this.excluirProduto(produtoRecebido.getCodigo());
             this.cadastrarProduto(produtoRecebido);
         } else {

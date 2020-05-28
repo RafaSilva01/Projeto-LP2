@@ -1,4 +1,7 @@
-package br.edu.udf;
+package testes;
+
+import br.edu.udf.Cliente;
+import br.edu.udf.DBClientes;
 
 public class TestaCliente {
     public static void main(String[] args) {
@@ -18,12 +21,11 @@ public class TestaCliente {
         dbClientes.listaClientes();
 
         //Editar Cliente
-        System.out.println("Alterando informacoes de Clientes:");
         dbClientes.editarCliente(cliente3);
         dbClientes.listaClientes();
 
-        //Excluir Cliente
-        //dbClientes.excluirCliente("70150465122");
-        //dbClientes.listaClientes();
+        // Excluir Cliente
+        dbClientes.excluirCliente("70150465122");
+        dbClientes.listaClientes();
     }
 }

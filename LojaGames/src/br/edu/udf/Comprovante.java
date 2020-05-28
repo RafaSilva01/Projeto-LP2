@@ -56,7 +56,7 @@ public class Comprovante {
         System.out.println("E-mail: " + this.email);
         System.out.println("Carrinho:");
         carrinho.listaCarrinho();
-        System.out.println("Total das compras: " + this.carrinho.somaCarrinho());
+        System.out.println("Total das compras: R$ " + this.carrinho.somaCarrinho());
         System.out.println("===================================");
     }
 

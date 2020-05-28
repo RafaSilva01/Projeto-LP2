@@ -28,7 +28,7 @@ public class DBClientes {
     public boolean cadastrarCliente(Cliente clienteRecebido) {
         boolean retorno = false;
 
-        if (validarCliente(clienteRecebido,false)) {
+        if (validarCliente(clienteRecebido, false)) {
             if (clientes.add(clienteRecebido)) {
                 retorno = true;
             }
@@ -52,17 +52,16 @@ public class DBClientes {
     public boolean editarCliente(Cliente clienteRecebido) {
         boolean retorno = false;
 
-        if (validarCliente(clienteRecebido,true)==true){
-            if(buscaClientePorCPF(clienteRecebido.getCpf())!=null){
+        if (validarCliente(clienteRecebido, true)) {
+            if (buscaClientePorCPF(clienteRecebido.getCpf()) != null) {
                 this.excluirCliente(clienteRecebido.getCpf());
                 this.cadastrarCliente(clienteRecebido);
                 retorno = true;
-            }else {
+            } else {
                 System.out.println("Nao foi possivel editar as informacoes do cliente." +
                         "Cliente nao cadastrado na base de dados");
             }
         }
-        if (retorno = true) System.out.println(clienteRecebido.getNome() + " foi cadastrado com sucesso !");
         return retorno;
     }
 
@@ -77,7 +76,7 @@ public class DBClientes {
         return retorno;
     }
 
-    public boolean validarCliente(Cliente clienteRecebido,boolean isEditarCliente) {
+    public boolean validarCliente(Cliente clienteRecebido, boolean isEditarCliente) {
         boolean retorno = false;
         boolean isNomeValid = false;
         boolean isCPFValid = false;
@@ -85,38 +84,35 @@ public class DBClientes {
         boolean isEmailValid = false;
         boolean isCPFUnico = false;
 
-        if (isEditarCliente){
-            isNomeValid = uteis.isNomeValid(clienteRecebido.getNome());
-            isCPFValid = uteis.isCPFValid(clienteRecebido.getCpf());
-            isEnderecoValid = uteis.isNomeValid(clienteRecebido.getEndereco());
-            isEmailValid = uteis.isEmailValid(clienteRecebido.getEmail());
+        isNomeValid = uteis.isNomeValid(clienteRecebido.getNome());
+        isCPFValid = uteis.isCPFValid(clienteRecebido.getCpf());
+        isEnderecoValid = uteis.isNomeValid(clienteRecebido.getEndereco());
+        isEmailValid = uteis.isEmailValid(clienteRecebido.getEmail());
+
+        if (isEditarCliente) {
+
             if (isNomeValid && isCPFValid && isEnderecoValid && isEmailValid) {
                 retorno = true;
-
             } else {
-                System.out.println("Itens incorretos: ");
-                if (!isNomeValid) System.out.println("Nome");
-                if (!isCPFValid) System.out.println("CPF");
-                if (!isEnderecoValid) System.out.println("Endereco");
-                if (!isEmailValid) System.out.println("Email");
+                if (!isCPFValid) System.out.println("O CPF esta invalido.");
             }
-        }else {
-            isNomeValid = uteis.isNomeValid(clienteRecebido.getNome());
-            isCPFValid = uteis.isCPFValid(clienteRecebido.getCpf());
-            isEnderecoValid = uteis.isNomeValid(clienteRecebido.getEndereco());
-            isEmailValid = uteis.isEmailValid(clienteRecebido.getEmail());
+
+        } else {
             isCPFUnico = this.isCPFUnico(clienteRecebido.getCpf());
 
             if (isNomeValid && isCPFValid && isEnderecoValid && isEmailValid && isCPFUnico) {
                 retorno = true;
             } else {
-                System.out.println("Itens incorretos: ");
-                if (!isNomeValid) System.out.println("Nome");
-                if (!isCPFValid || !isCPFUnico) System.out.println("CPF");
-                if (!isEnderecoValid) System.out.println("Endereco");
-                if (!isEmailValid) System.out.println("Email");
+                if (!isCPFValid || !isCPFUnico) System.out.println("O CPF esta invalido.");
             }
         }
+
+        if (!retorno) {
+            if (!isNomeValid) System.out.println("O nome esta invalido.");
+            if (!isEnderecoValid) System.out.println("O endereco esta invalido.");
+            if (!isEmailValid) System.out.println("O email esta invalido.");
+        }
+
         return retorno;
     }
 
@@ -124,7 +120,7 @@ public class DBClientes {
     public boolean adicionarComprovante(Comprovante comprovante, double totalCompra) {
         boolean retorno = false;
         for (Cliente cliente : clientes) {
-            if (cliente.getCpf() == comprovante.getCpf()) {
+            if (cliente.getCpf().equals(comprovante.getCpf())) {
                 cliente.setSaldo(cliente.getSaldo() - totalCompra);
                 cliente.adicionarComprovante(comprovante);
                 cliente.carrinho = new Carrinho();

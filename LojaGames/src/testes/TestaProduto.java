@@ -1,7 +1,7 @@
-package br.edu.udf;
+package testes;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import br.edu.udf.DBProdutos;
+import br.edu.udf.Produto;
 
 public class TestaProduto {
 
@@ -39,7 +39,7 @@ public class TestaProduto {
         //Novo produto criado 3, com o codigo de outro produto no caso, produto 1
         Produto produto3 = new Produto();
         produto3.setNome("Medal of Honor Frontline");
-        produto3.setCodigo("0010");
+        produto3.setCodigo("001");
         produto3.setPrecoOriginal(60.00);
         produto3.aumentarQuantidade(1);
 
@@ -48,7 +48,7 @@ public class TestaProduto {
         dbProdutos.buscaProdutoPorCodigo("001");
 
         //Excluir
-        System.out.println(dbProdutos.excluirProduto("001"));
+        dbProdutos.excluirProduto("001");
         dbProdutos.listaProdutos();
 
 

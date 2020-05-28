@@ -15,7 +15,7 @@ public class Carrinho {
 
 		Produto produto = bancoProdutos.buscaProdutoPorCodigo(codigoProduto);
 		if (produto.getQuantidadeDisponivel() < quantidade) {
-			System.out.println("Infelimente temos somente" +
+			System.out.println("Infelimente temos somente " +
 					produto.getQuantidadeDisponivel() + " itens deste produto. ");
 		} else {
 			for (int contador = 0; contador < quantidade; contador++) {

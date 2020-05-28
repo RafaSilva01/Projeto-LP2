@@ -2,7 +2,7 @@ package testes;
 
 import br.edu.udf.*;
 
-public class testePagamento {
+public class TestaPagamento {
     public static void main(String[] args) {
         DBProdutos dbProdutos = new DBProdutos();
         DBClientes dbClientes = new DBClientes();
@@ -12,7 +12,7 @@ public class testePagamento {
         produto.setNome("GTA 5");
         produto.setCodigo("123");
         produto.setPrecoOriginal(50.01);
-        produto.aumentarQuantidade(10);
+        produto.aumentarQuantidade(1);
         dbProdutos.cadastrarProduto(produto);
 
 
