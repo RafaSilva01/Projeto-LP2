@@ -84,7 +84,7 @@ public class DBProdutos {
                 System.out.printf("Produto codigo ("+codigoProduto+") excluido");
             }
         } else {
-            System.out.println("Nao foi possivel excluir o produto.");
+            System.out.println("Nao foi possivel excluir o produto");
         }
         return retorno;
     }

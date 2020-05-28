@@ -11,7 +11,6 @@ public class DBClientes {
     }
 
     public Cliente buscaClientePorCPF(String CPF) {
-
         for (Cliente cliente : clientes) {
             if (cliente.getCpf() == CPF) {
                 return cliente;
@@ -29,7 +28,7 @@ public class DBClientes {
     public boolean cadastrarCliente(Cliente clienteRecebido) {
         boolean retorno = false;
 
-        if (validarCliente(clienteRecebido)) {
+        if (validarCliente(clienteRecebido,false)) {
             if (clientes.add(clienteRecebido)) {
                 retorno = true;
             }
@@ -43,7 +42,6 @@ public class DBClientes {
         if (clienteParaExcluir != null) {
             if (clientes.remove(clienteParaExcluir)) {
                 retorno = true;
-                System.out.println("Cliente com CPF:"+CPF+" excluido com sucesso");
             }
         } else {
             System.out.println("Nao foi possivel excluir o cliente.");
@@ -53,8 +51,8 @@ public class DBClientes {
 
     public boolean editarCliente(Cliente clienteRecebido) {
         boolean retorno = false;
-
-        if (validarCliente(clienteRecebido)) {
+/*
+        if (validarCliente(clienteRecebido,true)) {
             for (Cliente cliente : clientes) {
                 if (cliente.getCpf() == clienteRecebido.getCpf()) {
                     retorno = true;
@@ -70,6 +68,20 @@ public class DBClientes {
                     "Verifique se o cliente ja foi cadastrado.");
         }
         return retorno;
+*/
+
+        if (validarCliente(clienteRecebido,true)==true){
+            if(buscaClientePorCPF(clienteRecebido.getCpf())!=null){
+                this.excluirCliente(clienteRecebido.getCpf());
+                this.cadastrarCliente(clienteRecebido);
+                retorno = true;
+            }else {
+                System.out.println("Nao foi possivel editar as informacoes do cliente." +
+                        "Cliente nao cadastrado na base de dados");
+            }
+        }
+
+        return retorno;
     }
 
     private boolean isCPFUnico(String cpf) {
@@ -83,20 +95,26 @@ public class DBClientes {
         return retorno;
     }
 
-    public boolean validarCliente(Cliente clienteRecebido) {
+    public boolean validarCliente(Cliente clienteRecebido,boolean isEditarCliente) {
         boolean retorno = false;
-
         boolean isNomeValid = false;
         boolean isCPFValid = false;
         boolean isEnderecoValid = false;
         boolean isEmailValid = false;
         boolean isCPFUnico = false;
-
-        isNomeValid = uteis.isNomeValid(clienteRecebido.getNome());
-        isCPFValid = uteis.isCPFValid(clienteRecebido.getCpf());
-        isCPFUnico = this.isCPFUnico(clienteRecebido.getCpf());
-        isEnderecoValid = uteis.isNomeValid(clienteRecebido.getEndereco());
-        isEmailValid = uteis.isEmailValid(clienteRecebido.getEmail());
+        System.out.println("editar cliente "+isEditarCliente);
+        if (isEditarCliente){
+            isNomeValid = uteis.isNomeValid(clienteRecebido.getNome());
+            isCPFValid = uteis.isCPFValid(clienteRecebido.getCpf());
+            isEnderecoValid = uteis.isNomeValid(clienteRecebido.getEndereco());
+            isEmailValid = uteis.isEmailValid(clienteRecebido.getEmail());
+        }else{
+            isNomeValid = uteis.isNomeValid(clienteRecebido.getNome());
+            isCPFValid = uteis.isCPFValid(clienteRecebido.getCpf());
+            isEnderecoValid = uteis.isNomeValid(clienteRecebido.getEndereco());
+            isEmailValid = uteis.isEmailValid(clienteRecebido.getEmail());
+            isCPFUnico = this.isCPFUnico(clienteRecebido.getCpf());
+        }
 
 
         if (isNomeValid && isCPFValid && isEnderecoValid && isEmailValid && isCPFUnico) {
