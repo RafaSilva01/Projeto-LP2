@@ -46,6 +46,7 @@ public class TestaProduto {
         //Alterando as informações do produto 1, usando código desse produto.
         dbProdutos.editarProduto(produto3);
         dbProdutos.buscaProdutoPorCodigo("001");
+        dbProdutos.listaProdutos();
 
         //Excluir
         dbProdutos.excluirProduto("001");

@@ -74,7 +74,7 @@ public class Produto {
         if (desconto > this.precoOriginal) {
             this.precoFinal = 0.0;
         } else {
-            this.precoFinal = this.precoOriginal - precoFinal;
+            this.precoFinal = this.precoOriginal - this.desconto;
         }
     }
 
